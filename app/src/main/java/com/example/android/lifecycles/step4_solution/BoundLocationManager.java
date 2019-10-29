@@ -73,5 +73,11 @@ public class BoundLocationManager {
             mLocationManager = null;
             Log.d("BoundLocationMgr", "Listener removed");
         }
+
+        //在该生命周期结束后调用
+        @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+        void printLog() {
+            Log.d("xiangsun_test", "printLog: oncreate");
+        }
     }
 }

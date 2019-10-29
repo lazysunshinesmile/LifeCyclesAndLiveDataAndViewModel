@@ -24,6 +24,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,7 +55,9 @@ public class LocationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("xiangsun_test", "onCreate: xiangsun_test1");
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.location_activity);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -66,6 +70,8 @@ public class LocationActivity extends AppCompatActivity {
         } else {
             bindLocationListener();
         }
+        Log.d("xiangsun_test", "onCreate: xiangsun_test2");
+
     }
 
     private class MyLocationListener implements LocationListener {

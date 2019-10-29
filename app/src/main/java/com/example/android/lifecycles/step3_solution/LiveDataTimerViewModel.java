@@ -31,6 +31,9 @@ public class LiveDataTimerViewModel extends ViewModel {
 
     private static final int ONE_SECOND = 1000;
 
+    /**
+     * 能推数据，postValue.也能在Activity中对该数据进行监听。
+     */
     private MutableLiveData<Long> mElapsedTime = new MutableLiveData<>();
 
     private long mInitialTime;

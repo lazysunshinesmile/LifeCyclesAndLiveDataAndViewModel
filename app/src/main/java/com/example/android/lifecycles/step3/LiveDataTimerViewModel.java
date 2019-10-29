@@ -20,13 +20,15 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import android.os.SystemClock;
+import android.util.Log;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 /**
  * A ViewModel used for the {@link ChronoActivity3}.
- */
+ *
+ * 该实例 直到相应的Activity或生命周期所有者不再存在。 */
 public class LiveDataTimerViewModel extends ViewModel {
 
     private static final int ONE_SECOND = 1000;
@@ -36,6 +38,7 @@ public class LiveDataTimerViewModel extends ViewModel {
     private long mInitialTime;
 
     public LiveDataTimerViewModel() {
+        Log.d("xiangsun_test", "LiveDataTimerViewModel: xiangsun_test");
         mInitialTime = SystemClock.elapsedRealtime();
         Timer timer = new Timer();
 
@@ -43,8 +46,9 @@ public class LiveDataTimerViewModel extends ViewModel {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
+                Log.d("xiangsun_test", "run: xiangsun_test");
                 final long newValue = (SystemClock.elapsedRealtime() - mInitialTime) / 1000;
-
+                mElapsedTime.postValue(newValue);
                 // setValue() cannot be called from a background thread so post to main thread.
                 //TODO post the new value with LiveData.postValue()
             }
